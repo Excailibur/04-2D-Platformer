@@ -45,7 +45,7 @@ func end():
 	player.should_direction_flip = true
 	$Sweat.emitting = false
 
-func physics_process(delta):
+func physics_process(_delta):
 	if not is_on_wall:
 		player.set_wall_raycasts(false)
 		SM.set_state("Falling")
