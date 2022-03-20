@@ -60,7 +60,7 @@ func physics_process(_delta):
 	
 	if $Timer.time_left <= $Timer.wait_time/2 and is_on_wall and not $Sweat.emitting:
 		$Sweat.position = player.position # set particles to player's position
-		$Sweat.position.y -= 10 # offset to put the particles on player's head
+		$Sweat.position.y -= 10# offset to put the particles on player's head
 		$Sweat.emitting = true
 
 func _on_Timer_timeout():
