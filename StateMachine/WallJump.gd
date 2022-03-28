@@ -40,7 +40,6 @@ func start():
 		if player_animsprite.flip_h:
 			player_animsprite.flip_h = false
 
-
 func end():
 	player.should_direction_flip = true
 	$Sweat.emitting = false
@@ -49,6 +48,9 @@ func physics_process(_delta):
 	if not is_on_wall:
 		player.set_wall_raycasts(false)
 		SM.set_state("Falling")
+	if is_on_wall:
+		player.velocity = Vector2(0,30)
+		player.move_and_slide(player.velocity,Vector2.DOWN)
 	
 	if Input.is_action_just_pressed("jump"):
 		var x = walljump_x_vel
@@ -57,7 +59,9 @@ func physics_process(_delta):
 		player.velocity = Vector2(x, -walljump_y_vel)
 		player.move_and_slide(player.velocity, Vector2.UP)
 		SM.set_state("Falling")
-	
+	if Input.is_action_pressed("crouch"):
+		is_on_wall = false
+
 	if $Timer.time_left <= $Timer.wait_time/2 and is_on_wall and not $Sweat.emitting:
 		$Sweat.position = player.position # set particles to player's position
 		$Sweat.position.y -= 10# offset to put the particles on player's head

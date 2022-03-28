@@ -2,9 +2,11 @@ extends Node
 
 onready var SM = get_parent()
 onready var player = get_node("../..")
+var soundjump = null
 
 func _ready():
 	yield(player, "ready")
+	soundjump = get_node_or_null("/root/Game/Sounds/SoundJump"); 
 
 func physics_process(_delta):
 	if not player.is_on_floor():
@@ -13,6 +15,8 @@ func physics_process(_delta):
 		player.velocity.y = 0
 
 	player.jump_power.y = clamp(player.jump_power.y - player.jump_speed, -player.max_jump, 0)
+	if Input.is_action_pressed("jump"):
+		$SoundJump.play()
 	if Input.is_action_just_released("jump"):
 		player.velocity.y = 0
 		player.velocity += player.jump_power

@@ -2,6 +2,7 @@ extends Node
 
 onready var SM = get_parent()
 onready var player = get_node("../..")
+var soundjump = null
 
 func _ready():
 	yield(player, "ready")
@@ -17,6 +18,7 @@ func physics_process(_delta):
 	if player.is_moving():
 		player.jump_power.x = clamp(player.jump_power.x + (player.move_vector().x * player.leap_speed), -player.max_leap, player.max_leap)
 	if Input.is_action_pressed("jump"):
+		$SoundJump.play()
 		player.jump_power.y = clamp(player.jump_power.y - player.jump_speed, -player.max_jump, 0)
 	else:
 		player.velocity.y = 0
