@@ -58,7 +58,9 @@ func physics_process(_delta):
 			x = -x
 		player.velocity = Vector2(x, -walljump_y_vel)
 		player.move_and_slide(player.velocity, Vector2.UP)
+		$SoundJump.play()
 		SM.set_state("Falling")
+
 	if Input.is_action_pressed("crouch"):
 		is_on_wall = false
 

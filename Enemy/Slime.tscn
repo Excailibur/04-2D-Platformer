@@ -33,11 +33,11 @@ animations = [ {
 } ]
 
 [sub_resource type="CapsuleShape2D" id=5]
-radius = 40.0
+radius = 39.9999
 height = 71.1111
 
 [sub_resource type="CapsuleShape2D" id=6]
-radius = 100.0
+radius = 108.0
 height = 112.0
 
 [node name="Slime" type="KinematicBody2D"]
@@ -46,7 +46,7 @@ script = ExtResource( 1 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 4 )
-frame = 20
+frame = 5
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

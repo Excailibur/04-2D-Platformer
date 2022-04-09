@@ -15,7 +15,7 @@ func physics_process(_delta):
 		player.velocity.y = 0
 
 	player.jump_power.y = clamp(player.jump_power.y - player.jump_speed, -player.max_jump, 0)
-	if Input.is_action_pressed("jump"):
+	if Input.is_action_just_released("jump"):
 		$SoundJump.play()
 	if Input.is_action_just_released("jump"):
 		player.velocity.y = 0
